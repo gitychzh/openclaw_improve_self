@@ -15,9 +15,25 @@
       "description": "health-check.sh 失败时写入 .health-failed 标记",
       "result": "pass",
       "timestamp": "2026-06-25T22:12:00"
+    },
+    {
+      "round": 2,
+      "tag": "stable-v1",
+      "type": "baseline",
+      "description": "Phase 1-5 完成，打 stable tag",
+      "result": "pass",
+      "timestamp": "2026-06-25T22:30:00"
+    },
+    {
+      "round": 3,
+      "tag": "pre-optimize-001",
+      "type": "acp-optimize",
+      "description": "第一轮 ACP 优化：补齐 tests/ + pre-commit hook + 脚本审查",
+      "result": "pending",
+      "timestamp": "2026-06-25T23:00:00"
     }
   ],
-  "currentRound": 1,
-  "totalRounds": 1,
-  "lastOptimizeAt": "2026-06-25T22:12:00"
+  "currentRound": 3,
+  "totalRounds": 3,
+  "lastOptimizeAt": "2026-06-25T23:00:00"
 }
