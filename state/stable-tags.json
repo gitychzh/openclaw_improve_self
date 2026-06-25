@@ -18,5 +18,10 @@
     "tag": "pre-optimize-001-rev1",
     "timestamp": "2026-06-25T23:02:40.297317",
     "commit": "ef5f4a0ee3c0f1715948dc69b8db8598eb3fcfc8"
+  },
+  {
+    "tag": "stable-v2",
+    "timestamp": "2026-06-25T23:06:26.438288",
+    "commit": "3093d21f4f0e98a8af55bf379395cad85f4f3e39"
   }
 ]

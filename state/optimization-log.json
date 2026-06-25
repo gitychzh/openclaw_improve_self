@@ -26,14 +26,16 @@
     },
     {
       "round": 3,
-      "tag": "pre-optimize-001",
+      "tag": "stable-v2",
       "type": "acp-optimize",
-      "description": "第一轮 ACP 优化：补齐 tests/ + pre-commit hook + 脚本审查",
-      "result": "pending",
-      "timestamp": "2026-06-25T23:00:00"
+      "description": "opt-001: 补齐单元测试 + pre-commit hook + 脚本审查",
+      "result": "pass",
+      "timestamp": "2026-06-25T23:05:00",
+      "review": "h1 独立验证: 8/8 测试通过, health check 6/6, pre-commit hook 正常"
     }
   ],
   "currentRound": 3,
   "totalRounds": 3,
-  "lastOptimizeAt": "2026-06-25T23:00:00"
+  "lastOptimizeAt": "2026-06-25T23:05:00",
+  "stableTag": "stable-v2"
 }
