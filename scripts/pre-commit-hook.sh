@@ -15,7 +15,17 @@
 
 set -u
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# 解析脚本真实物理路径 (跟随 symlink), 这样经 .git/hooks/pre-commit 软链调用时
+# 也能正确定位到 scripts/ 目录, 而非误判为 .git/hooks/.
+# BASH_SOURCE[0] 可能是相对路径或 symlink, readlink -f 统一解析为绝对物理路径.
+SELF="${BASH_SOURCE[0]}"
+if command -v readlink >/dev/null 2>&1; then
+  SELF_REAL="$(readlink -f "$SELF" 2>/dev/null || printf '%s' "$SELF")"
+else
+  # 无 readlink 的兜底: 退回原路径 (BSD/老系统)
+  SELF_REAL="$SELF"
+fi
+SCRIPT_DIR="$(cd "$(dirname "$SELF_REAL")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 HEALTH_CHECK="$SCRIPT_DIR/health-check.sh"
 

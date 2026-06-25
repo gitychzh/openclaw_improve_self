@@ -25,6 +25,25 @@ with open('$PROJECT_DIR/state/stable-tags.json') as f:
   if [ -n "$STABLE_TAG" ]; then
     echo "回滚到 stable tag: $STABLE_TAG"
     cd "$PROJECT_DIR"
+
+    # hard reset 前先 stash 保护未提交改动 (额外保险)
+    # 统计已跟踪文件的改动数 (不含未跟踪文件, stash -u 才包含未跟踪)
+    STASH_FILES=$(git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
+    STAGED_FILES=$(git diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
+    DIRTY_COUNT=$((STASH_FILES + STAGED_FILES))
+    if [ "$DIRTY_COUNT" -gt 0 ]; then
+      # stash 已跟踪改动 (不包含未跟踪文件, 保持最小侵入); 失败不阻断回滚
+      if git stash push -m "safe-mode: pre-reset stash ($STABLE_TAG)" >/dev/null 2>&1; then
+        echo "stashed $DIRTY_COUNT files before reset"
+      else
+        echo "WARNING: stash 失败, 继续硬回滚 (改动可能丢失)"
+      fi
+    else
+      echo "no uncommitted changes to stash"
+    fi
+    # 注意: reset 后 stash 不自动恢复 (安全模式下不信任当前改动)
+    # 如需找回: git stash list / git stash pop
+
     git reset --hard "$STABLE_TAG"
     echo "已回滚到 $STABLE_TAG"
   else
