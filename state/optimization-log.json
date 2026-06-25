@@ -1,6 +1,23 @@
 {
-  "optimizations": [],
-  "currentRound": 0,
-  "totalRounds": 0,
-  "lastOptimizeAt": null
+  "optimizations": [
+    {
+      "round": 0,
+      "tag": "stable-baseline",
+      "type": "baseline",
+      "description": "项目初始化 + 基线健康检查",
+      "result": "pass",
+      "timestamp": "2026-06-25T22:07:45"
+    },
+    {
+      "round": 1,
+      "tag": null,
+      "type": "fix",
+      "description": "health-check.sh 失败时写入 .health-failed 标记",
+      "result": "pass",
+      "timestamp": "2026-06-25T22:12:00"
+    }
+  ],
+  "currentRound": 1,
+  "totalRounds": 1,
+  "lastOptimizeAt": "2026-06-25T22:12:00"
 }
