@@ -6,6 +6,9 @@
 ERRORS=0
 WARNINGS=0
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MARK_FILE="$SCRIPT_DIR/../state/.health-failed"
+
 echo "=== Health Check Start ==="
 
 # 1. openclaw 进程
@@ -84,7 +87,13 @@ fi
 echo "=== Health Check Result ==="
 if [ $ERRORS -gt 0 ]; then
   echo "RESULT: FAIL ($ERRORS error(s))"
+  # 写入崩溃标记，供 safe-mode.sh 检测
+  mkdir -p "$(dirname "$MARK_FILE")"
+  echo "{\"failed_at\":\"$(date -Iseconds)\",\"errors\":$ERRORS}" > "$MARK_FILE"
   exit 1
 fi
+
+# 健康则清除标记
+rm -f "$MARK_FILE"
 echo "RESULT: OK"
 exit 0
