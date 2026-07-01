@@ -2,3 +2,5 @@ state/optimization-log.json.bak
 *.tmp
 *.log
 state/.health-failed
+state/.h1-optimizing
+state/.opc2-optimizing
