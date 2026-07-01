@@ -1,10 +1,10 @@
 {
   "round": 0,
-  "phase": "ready",
+  "phase": "review",
   "nextProposer": "opc1",
-  "reviewer": null,
+  "reviewer": "opc2",
   "applier": null,
   "stalemateCount": 0,
   "startedAt": "2026-07-01T21:47:00+08:00",
-  "target": null
+  "target": "opc2-contextWindow-170000-to-131072"
 }

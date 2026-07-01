@@ -1,0 +1,6 @@
+{
+  "op": "replace",
+  "path": "$.models.providers['hm40006-nv'].models[?(@.id=='dsv4p_nv')].contextWindow",
+  "oldValue": 170000,
+  "newValue": 131072
+}
