@@ -1,11 +1,10 @@
 {
   "round": 0,
   "phase": "ready",
-  "proposer": "opc1",
-  "opponent": "opc2",
-  "target": "opc2's openclaw.json",
-  "params": [],
-  "startedAt": null,
-  "deadline": null,
-  "lock": null
+  "nextProposer": "opc1",
+  "reviewer": null,
+  "applier": null,
+  "stalemateCount": 0,
+  "startedAt": "2026-07-01T21:47:00+08:00",
+  "target": null
 }
